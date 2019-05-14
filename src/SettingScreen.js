@@ -11,7 +11,20 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import FooterButton from './components/FooterButton';
 
+import firebase from 'react-native-firebase';
+
+import Toast from 'react-native-easy-toast';
+
 export default class SettingScreen extends Component {
+
+    handleSignOut = () => {
+        firebase
+            .auth()
+            .signOut()
+            .then(() => this.props.navigation.navigate('Home'))
+            .catch(() => this.refs.toast.show('오류가 발생했습니다. 다시 시도해 주세요', 1000));
+    }
+
     render() {
         return(
             <View style={styles.container}>
@@ -30,8 +43,10 @@ export default class SettingScreen extends Component {
                 <FooterButton
                     buttonText="로그아웃"
                     style={styles.footerButton}
+                    onPress={this.handleSignOut}
                 />
                 <Text style={styles.currentVersionText}> ©️ 원래는 웹을 하려고 했었다. </Text>
+                <Toast ref="toast" />
             </View>
         )
     }

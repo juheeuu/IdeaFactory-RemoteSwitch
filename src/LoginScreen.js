@@ -6,8 +6,13 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    ActivityIndicator,
 } from 'react-native';
 import FooterButton from './components/FooterButton'
+
+import Toast from 'react-native-easy-toast';
+
+import firebase from 'react-native-firebase';
 
 export default class LoginScreen extends Component {
     constructor(props) {
@@ -18,6 +23,15 @@ export default class LoginScreen extends Component {
             id: '',
             pw: '',
         }
+    }
+
+    handleLogin = () => {
+        const { id, pw } = this.state;
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(id, pw)
+            .then(() => this.props.navigation.navigate('Main'))
+            .catch(() => this.refs.toast.show('잘못된 로그인 정보입니다. 다시 로그인해 주세요!', 1000));
     }
 
     render() {
@@ -44,14 +58,16 @@ export default class LoginScreen extends Component {
                 <FooterButton 
                     buttonText="로그인"
                     style={styles.loginButton}
-                    onPress={() => this.props.navigation.navigate('Main')}
+                    onPress={this.handleLogin}
                 />
+                <ActivityIndicator size = "small"/>
                 <Text style={styles.noAccountText}>계정이 없으신가요?</Text>
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('SignUp')}
                 >
                     <Text style={styles.makeAccountText}>계정 만들기</Text>
                 </TouchableOpacity>
+                <Toast ref="toast" />
             </View>
         );
     }

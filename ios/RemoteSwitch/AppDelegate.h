@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#import <Firebase.h>
 #import <React/RCTBridgeDelegate.h>
 #import <UIKit/UIKit.h>
 
