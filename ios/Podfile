@@ -8,6 +8,7 @@ target 'RemoteSwitch' do
   # Pods for RemoteSwitch
   pod 'Firebase/Core', '~> 5.20.1'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
   target 'RemoteSwitch-tvOSTests' do
     inherit! :search_paths

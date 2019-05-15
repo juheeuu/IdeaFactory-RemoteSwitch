@@ -22,16 +22,24 @@ export default class LoginScreen extends Component {
             pwText: '비밀번호',
             id: '',
             pw: '',
+            loading: false,
         }
     }
 
     handleLogin = () => {
         const { id, pw } = this.state;
+        this.setState({ loading: true });
         firebase
             .auth()
             .signInWithEmailAndPassword(id, pw)
-            .then(() => this.props.navigation.navigate('Main'))
-            .catch(() => this.refs.toast.show('잘못된 로그인 정보입니다. 다시 로그인해 주세요!', 1000));
+            .then(() => {
+                this.setState({ loading: false })
+                this.props.navigation.navigate('Main')
+            })
+            .catch(() => {
+                this.setState({ loading: false })
+                this.refs.toast.show('잘못된 로그인 정보입니다. 다시 로그인해 주세요!', 1000)
+            });
     }
 
     render() {
@@ -55,12 +63,17 @@ export default class LoginScreen extends Component {
                     autoCorrect={false}
                     secureTextEntry={true}
                 />
-                <FooterButton 
-                    buttonText="로그인"
-                    style={styles.loginButton}
-                    onPress={this.handleLogin}
-                />
-                <ActivityIndicator size = "small"/>
+                {
+                    this.state.loading
+                    ? <ActivityIndicator style={styles.loginButton} size="small" />
+                    : <FooterButton 
+                        buttonText="로그인"
+                        style={styles.loginButton}
+                        onPress={this.handleLogin}
+                        />
+                     
+                }
+                
                 <Text style={styles.noAccountText}>계정이 없으신가요?</Text>
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('SignUp')}

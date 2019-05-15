@@ -4,6 +4,7 @@ import {
     Text,
     StyleSheet,
     TextInput,
+    ActivityIndicator,
 } from 'react-native';
 
 import FooterButton from './components/FooterButton';
@@ -15,18 +16,28 @@ import Toast from 'react-native-easy-toast';
 export default class SignupScreen extends Component {
     constructor(props) {
         super(props);
+        this.ref = firebase.firestore().collection('user')
         this.state = {
             email: '이메일',
             password: '비밀번호',
+            loading: false,
         }
     }
 
     handleSignUp = () => {
+        this.setState({ loading: true });
         firebase
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(() => this.props.navigation.navigate('Main'))
-        .catch(() => this.refs.toast.show('이메일 형식을 확인해 주세요.\n비밀번호는 6자 이상이어야 합니다.', 1000));
+        .then(() => {
+            this.setState({ loading: false })
+            this.ref.add({ id: this.state.email })
+            this.props.navigation.navigate('Main')
+        })
+        .catch(() => {
+            this.setState({ loading: false })
+            this.refs.toast.show('이메일 형식을 확인해 주세요.\n비밀번호는 6자 이상이어야 합니다.', 1000)
+        });
     }
 
     render() {
@@ -47,11 +58,15 @@ export default class SignupScreen extends Component {
                     secureTextEntry={true}
                 />
                 <Text style={styles.descriptionText}>회원가입 시 이용약관에 동의한 것으로 간주합니다.</Text> 
-                <FooterButton
-                    style={styles.signupButton}
-                    buttonText="회원가입"
-                    onPress={this.handleSignUp}
-                />
+                {
+                    this.state.loading
+                    ? <ActivityIndicator size="small" style={styles.signupButton} />
+                    : <FooterButton
+                        style={styles.signupButton}
+                        buttonText="회원가입"
+                        onPress={this.handleSignUp}
+                        />
+                }
                 <Toast ref="toast" />
             </View>
         );
