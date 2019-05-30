@@ -44,6 +44,14 @@ export default class MainScreen extends Component {
         })
     }
 
+    handleSwich = () => {
+        let URL = this.state.isSwitchTurnOn
+        ? "http://192.168.4.1/OFF"
+        : "http://192.168.4.1/ON"
+        fetch(URL).then(res => console.log(res.json())).catch(err => console.log(err));
+        this.setState({isSwitchTurnOn: !this.state.isSwitchTurnOn})
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -69,13 +77,8 @@ export default class MainScreen extends Component {
                     />
                 </TouchableOpacity>
                 </View>
-                <WeatherBox 
-                    temperature="12"
-                    weather="Sunny"
-                    location="Daejeon"
-                />
                 <TouchableOpacity
-                    onPress={() => this.setState({isSwitchTurnOn: !this.state.isSwitchTurnOn})}
+                    onPress={this.handleSwich}
                 >
                     <Image
                         source={
