@@ -8,7 +8,7 @@ import SettingScreen from './src/SettingScreen';
 
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: LoginScreen,
+    screen: MainScreen,
     navigationOptions: {
       header: null
     },

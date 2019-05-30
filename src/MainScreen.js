@@ -57,6 +57,7 @@ export default class MainScreen extends Component {
                     <AntDesign name="setting" color="#926FF2" size={30} />
                 </TouchableOpacity>
                 </View>
+                <View>
                 <TouchableOpacity
                     onPress={this.handleWeatherBox}
                 >
@@ -67,6 +68,12 @@ export default class MainScreen extends Component {
                         location={this.state.location}
                     />
                 </TouchableOpacity>
+                </View>
+                <WeatherBox 
+                    temperature="12"
+                    weather="Sunny"
+                    location="Daejeon"
+                />
                 <TouchableOpacity
                     onPress={() => this.setState({isSwitchTurnOn: !this.state.isSwitchTurnOn})}
                 >

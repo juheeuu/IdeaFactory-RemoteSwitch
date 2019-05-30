@@ -67,6 +67,7 @@ export default class SignupScreen extends Component {
                         onPress={this.handleSignUp}
                         />
                 }
+                
                 <Toast ref="toast" />
             </View>
         );

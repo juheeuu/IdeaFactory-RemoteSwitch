@@ -131,6 +131,11 @@ const styles = StyleSheet.create({
         height: 50,
         marginTop: 50,
     },
+    activityIndicator: {
+        width: 315,
+        height: 50,
+        marginTop: 50,
+    },
     noAccountText: {
         marginTop: 30,
         fontSize: 12,

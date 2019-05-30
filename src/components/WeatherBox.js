@@ -18,7 +18,6 @@ export default class WeatherBox extends Component {
                         <Ionicons name="ios-sunny" color="#ffffff" size={80} />
                     </View>
                 )
-
         }
     }
 
