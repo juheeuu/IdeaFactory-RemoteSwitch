@@ -15,9 +15,35 @@ export default class MainScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSwitchTurnOn: true
+            isSwitchTurnOn: true,
+            weatherIcon: "",
+            weatherText: "",
+            temperature: null,
+            location: null,
         };
     }
+
+    handleWeatherBox = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            let lat = position.coords.latitude
+            let lng = position.coords.longitude
+
+            let key = "ef544af16dd544cd8b141222192205"
+            let URL = "https:api.apixu.com/v1/current.json?key="+key+"&q="+lat+","+lng
+
+            fetch(URL)
+            .then(res => res.json())
+            .then((data) => {                
+                this.setState({
+                weatherIcon: "https:"+data.current.condition.icon,
+                weatherText: data.current.condition.text,
+                temperature: data.current.temp_c,
+                location: data.location.name,
+            })})
+
+        })
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -31,11 +57,16 @@ export default class MainScreen extends Component {
                     <AntDesign name="setting" color="#926FF2" size={30} />
                 </TouchableOpacity>
                 </View>
-                <WeatherBox 
-                    temperature="12"
-                    weather="Sunny"
-                    location="Daejeon"
-                />
+                <TouchableOpacity
+                    onPress={this.handleWeatherBox}
+                >
+                    <WeatherBox 
+                        weatherIcon={this.state.weatherIcon}
+                        temperature={this.state.temperature}
+                        weather={this.state.weatherText}
+                        location={this.state.location}
+                    />
+                </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => this.setState({isSwitchTurnOn: !this.state.isSwitchTurnOn})}
                 >

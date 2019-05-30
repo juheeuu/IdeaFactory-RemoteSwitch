@@ -27,9 +27,13 @@ export default class WeatherBox extends Component {
             <View>
                 <Image 
                     source={require('./WeatherBox.png')}
-                    style={StyleSheet.weatherBox}
+                    style={styles.weatherBox}
                 />
-                {this.renderWeatherIcon(this.props.weather)}
+                <Image
+                    source={{uri: this.props.weatherIcon}}
+                    style={styles.weatherIcon}
+                />
+
                 <Text style={styles.temperatureText}>
                     {this.props.temperature}ºC
                 </Text> 
@@ -60,24 +64,24 @@ const styles = StyleSheet.create({
     weatherText: {
         position: 'absolute',
         color: 'white',
-        fontSize: 30,
+        fontSize: 20,
         textAlign: 'center',
-        marginTop: 50,
+        marginTop: 70,
         right: 30,
     },
     locationText: {
         position: 'absolute',
         color: 'white',
-        fontSize: 30,
+        fontSize: 20,
         textAlign: 'center',
-        marginTop: 80,
+        marginTop: 90,
         right: 30,
     },
     weatherIcon: {
         position: 'absolute',
-        color: 'white',
-        textAlign: 'center',
-        marginTop: 30,
-        left: 30,
+        marginTop: 10,
+        left: 5,
+        width: 170,
+        height: 130,
     },
 })

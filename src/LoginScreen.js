@@ -26,6 +26,19 @@ export default class LoginScreen extends Component {
         }
     }
 
+    componentDidMount() {
+        firebase.messaging().hasPermission()
+        .then(enabled => {
+            if (enabled) {
+                firebase.messaging().getToken().then(token => console.log("LOG", token))
+            } else {
+                firebase.messaging().requestPermission()
+                    .then(() => alert("User Now Has Permission"))
+                    .catch((error) => alert("Error", error))
+            }
+        })
+    }
+
     handleLogin = () => {
         const { id, pw } = this.state;
         this.setState({ loading: true });

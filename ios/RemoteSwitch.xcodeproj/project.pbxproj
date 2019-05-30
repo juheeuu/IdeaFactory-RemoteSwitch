@@ -58,7 +58,7 @@
 		C91DDB0D558B4AFB8872563A /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8DD94E46AD64392B7750D48 /* libRNVectorIcons.a */; };
 		CB2DD40FFF8ACD1F2A518978 /* libPods-RemoteSwitchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0410815CD9E01BAC84A861B /* libPods-RemoteSwitchTests.a */; };
 		DFA30E05D3FA45C3B9C9140D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE22C28355B24D5EA6D9BF0E /* Zocial.ttf */; };
-		DFD74EC7228A8A1000619BAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFD74EC6228A8A1000619BAF /* GoogleService-Info.plist */; };
+		DFB60338229E0B5400FE5AB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFB60337229E0B5300FE5AB0 /* GoogleService-Info.plist */; };
 		E3804B5C17ED63F23799865A /* libPods-RemoteSwitch-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F8547376EFE20A5ECB08B4 /* libPods-RemoteSwitch-tvOS.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
@@ -432,7 +432,8 @@
 		D7E6AEBCB13A41C2B8794CF9 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		DBDAA216807242B0B03B07ED /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		DE22C28355B24D5EA6D9BF0E /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		DFD74EC6228A8A1000619BAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DFA5FC5E229D1BC100C655BE /* RemoteSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RemoteSwitch.entitlements; path = RemoteSwitch/RemoteSwitch.entitlements; sourceTree = "<group>"; };
+		DFB60337229E0B5300FE5AB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E028AA1F87B7B11FD8B7FDBC /* Pods-RemoteSwitch-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteSwitch-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteSwitch-tvOS/Pods-RemoteSwitch-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		E032801A18D0BC8267ABB745 /* Pods-RemoteSwitch-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteSwitch-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteSwitch-tvOS/Pods-RemoteSwitch-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E4B430EBE835B004B235B094 /* libPods-RemoteSwitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemoteSwitch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -592,12 +593,13 @@
 		13B07FAE1A68108700A75B9A /* RemoteSwitch */ = {
 			isa = PBXGroup;
 			children = (
+				DFA5FC5E229D1BC100C655BE /* RemoteSwitch.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				DFD74EC6228A8A1000619BAF /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				DFB60337229E0B5300FE5AB0 /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -894,6 +896,17 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = PKWZ89M53J;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1310,7 +1323,7 @@
 				1BCD1CA02023405DA56A65A9 /* FontAwesome5_Regular.ttf in Resources */,
 				85042744103A4191B2D02E46 /* FontAwesome5_Solid.ttf in Resources */,
 				13F498F481614DBCA4998994 /* Foundation.ttf in Resources */,
-				DFD74EC7228A8A1000619BAF /* GoogleService-Info.plist in Resources */,
+				DFB60338229E0B5400FE5AB0 /* GoogleService-Info.plist in Resources */,
 				C8A38C7D614D49B491A62A8E /* Ionicons.ttf in Resources */,
 				EDDCC23BD6E54540BB3ABA83 /* MaterialCommunityIcons.ttf in Resources */,
 				B4A8A48A8CEC43ABB6A06177 /* MaterialIcons.ttf in Resources */,
@@ -1595,8 +1608,10 @@
 			baseConfigurationReference = 90EFCBAEF69F936E4AB4D3C8 /* Pods-RemoteSwitch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RemoteSwitch/RemoteSwitch.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = PKWZ89M53J;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1621,7 +1636,9 @@
 			baseConfigurationReference = 3444A459A49207F3841BA33B /* Pods-RemoteSwitch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RemoteSwitch/RemoteSwitch.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PKWZ89M53J;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
