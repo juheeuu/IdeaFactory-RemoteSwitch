@@ -44,7 +44,7 @@ export default class MainScreen extends Component {
         })
     }
 
-    handleSwich = () => {
+    handleSwitch = () => {
         let URL = this.state.isSwitchTurnOn
         ? "http://192.168.4.1/OFF"
         : "http://192.168.4.1/ON"
@@ -78,7 +78,7 @@ export default class MainScreen extends Component {
                 </TouchableOpacity>
                 </View>
                 <TouchableOpacity
-                    onPress={this.handleSwich}
+                    onPress={this.handleSwitch}
                 >
                     <Image
                         source={
